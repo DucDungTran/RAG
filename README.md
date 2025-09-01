@@ -70,3 +70,54 @@ Ensure the generated answer is reliable and useful.
     - Faithfulness: is it grounded in sources?
     - Coverage: does it use all necessary infomation?
 - Optional Re-query / Feedback loop: retry retrieval if first results are weak.
+
+# RAG in The Cloud
+
+When deploying RAG solutions in the cloud, several key considerations come into play to ensure optimal performance, security, and cost-effectiveness:
+- Performance: Efficient document ingestion, indexing, and retrieval.
+- Security & Compliance: Access control, encryption, auditability.
+- Integration: How well the cloud's AI services interconnect.
+- Cost-effectiveness and operational scalability.
+
+These factors guide the evaluation across Amazon Web Services (AWS), Microsoft Azure, and Google Cloud Platform (GCP).
+
+**Cloud-by-Cloud Comparison**
+
+| **Cloud Platform** | **Highlights** |
+| -------------- | ----------------------------------------------------------------------------------------------------- |
+| **AWS**        | Greatest flexibility; highly scalable; strong ML ecosystem (Bedrock, Kendra, Lambda, etc.)            |
+| **Azure**      | Deep integration with Microsoft stack; strong governance and security; great for enterprise scenarios |
+| **GCP**        | Simplified RAG workflow via Vertex AI; cost-effective, serverless-first deployments                   |
+
+- AWS:
+    - Offers high flexibility with services like Amazon Bedrock (for embeddings and LLMs) and Amazon Kendra (for enterprise search).
+    - Integrates effectively with orchestration components like Lambda and DynamoDB.
+    - Strong in scalability, security, and cost optimization for large-scale RAG deployments.
+
+- Azure:
+    - Seamlessly integrates Azure Cognitive Search (AI search/indexing) with Azure OpenAI.
+    - Ideal for organizations already embedded in the Microsoft ecosystem due to strong security, ease of integration, and enterprise-friendly features.
+
+- GCP:
+    - Offers a streamlined RAG experience via Vertex AI, including the RAG Engine for simplified model integration.
+    - Known for serverless deployment ease and cost efficiency, especially for teams prioritizing scalability and simplified operations.
+
+# Building a RAG system with Azure OpenAI and Azure AI Search
+
+**1. What are Microsoft Azure, Azure OpenAI, and Azure AI Cognitive Search?**
+- Microsoft Azure is a cloud platform offering compute, storage, databases, AI, and networking services for building and running applications at scale.
+- Azure OpenAI Service provides access to OpenAI's models (GPT-4/5, GPT-4o, embeddings, etc.) on Azure infrastructure with enterprise security, compliance, and integration.
+- Azure AI Cognitive Search (now Azure AI Search) is a cloud search service that lets you index, search, and retrieve structured and unstructured content. It combines keyword search, semantic search, and vector search into a single service.
+
+**2. RAG with Azure OpenAI + AI Search in Python**
+
+To build a RAG system with Microsoft Azure in Python, we first create the following Azure resources using the Azure portal or Azure Cloud Shell:
+- In Azure AI Foundry, create an AI Hub to organize projects.
+- Azure OpenAI: Deploy a chat/completions model (e.g., GPT-5/GPT-4.1 family) and an embeddings model (text-embedding-3-large/-3-small...).
+- Azure AI Search: Create a document search database with support for vectorization.
+
+## References
+
+- [RAG Course (DeepLearning.AI)](https://www.deeplearning.ai/courses/retrieval-augmented-generation-rag/)
+- [RAG in The Cloud](https://ragaboutit.com/rag-in-the-cloud-comparing-aws-azure-and-gcp-for-deploying-retrieval-augmented-generation-solutions/)
+- [RAG in Azure](https://www.udemy.com/course/rag-azure/?srsltid=AfmBOopllP1u1rFr7lPo57zgQZU-igkB3-yKjzveLY8uwyStl89nfWZ0)

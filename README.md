@@ -116,6 +116,14 @@ To build a RAG system with Microsoft Azure in Python, we first create the follow
 - Azure OpenAI: Deploy a chat/completions model (e.g., GPT-5/GPT-4.1 family) and an embeddings model (text-embedding-3-large/-3-small...).
 - Azure AI Search: Create a document search database with support for vectorization.
 
+**3. RAG with Azure in Python**
+Provided in rag_azure.ipynb file.
+
+**4. Demo (Streamlit)**
+Paste a query in the chat. The tool returns responses with and without RAG.
+
+![Streamlit demo](images/result.png)
+
 ## References
 
 - [RAG Course (DeepLearning.AI)](https://www.deeplearning.ai/courses/retrieval-augmented-generation-rag/)

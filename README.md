@@ -27,7 +27,7 @@ RAG is designed to address the above shortcomings with the following advantages:
 - Domain adaptation: Tailors general LMs to specialized fields (medicine, law, etc.).
 - Efficiency: Avoids retraining large models — just update the knowledge base.
 
-# Pipeline and Techniques
+## Pipeline and Techniques
 
 ![RAG Pipeline](images/RAG_pipeline.png)
 
@@ -71,7 +71,7 @@ Ensure the generated answer is reliable and useful.
     - Coverage: does it use all necessary infomation?
 - Optional Re-query / Feedback loop: retry retrieval if first results are weak.
 
-# RAG in The Cloud
+## RAG in The Cloud
 
 When deploying RAG solutions in the cloud, several key considerations come into play to ensure optimal performance, security, and cost-effectiveness:
 - Performance: Efficient document ingestion, indexing, and retrieval.
@@ -102,7 +102,7 @@ These factors guide the evaluation across Amazon Web Services (AWS), Microsoft A
     - Offers a streamlined RAG experience via Vertex AI, including the RAG Engine for simplified model integration.
     - Known for serverless deployment ease and cost efficiency, especially for teams prioritizing scalability and simplified operations.
 
-# Building a RAG system with Azure OpenAI and Azure AI Search
+## Building a RAG system with Azure OpenAI and Azure AI Search
 
 **1. What are Microsoft Azure, Azure OpenAI, and Azure AI Cognitive Search?**
 - Microsoft Azure is a cloud platform offering compute, storage, databases, AI, and networking services for building and running applications at scale.
@@ -116,13 +116,27 @@ To build a RAG system with Microsoft Azure in Python, we first create the follow
 - Azure OpenAI: Deploy a chat/completions model (e.g., GPT-5/GPT-4.1 family) and an embeddings model (text-embedding-3-large/-3-small...).
 - Azure AI Search: Create a document search database with support for vectorization.
 
-**3. RAG with Azure in Python**
-Provided in rag_azure.ipynb file.
+RAG with Azure in Python: Provided in rag_azure.ipynb file.
 
-**4. Demo (Streamlit)**
-Paste a query in the chat. The tool returns responses with and without RAG.
+Demo (Streamlit): Paste a query in the chat. The tool returns responses with and without RAG.
 
 ![Streamlit demo](images/result.png)
+
+**3. Cloud-Native RAG Inside Azure AI Foundry**
+
+To configure RAG directly inside Azure AI Foundry, the following RAG flow is deployed:
+- Create AI Hub + Project,
+- Deploy chat + embedding models in Azure AI Foundry portal,
+- Create an Azure AI Search service,
+- Connect data source by uploading own data (markdown Azure docs) to chat playground in Azure AI Foundry portal,
+
+**Results**
+
+Without RAG
+![Without RAG](images/cloud-naive-rag-01.png)
+
+With RAG
+![With RAG](images/cloud-naive-rag-02.png)
 
 ## References
 

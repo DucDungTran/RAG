@@ -17,7 +17,7 @@ In this project, a RAG framework is developed via Langchain, Azure OpenAI and AI
 
 ## Models
 - [Fine-tuned LegalBERT](https://github.com/DucDungTran/NLP/tree/main/Contract-clause-analysis-chatbot): domain-specific BERT trained on legal corpora; excels on legal tasks due to in-domain pretraining. 
-- GPT-4.1 via Azure OpenAI: generates risk narratives and mitigation steps from the classifier outputs and raw clause text using the Chat Completions API.
+- GPT-4.1 via Azure OpenAI: generates risk narratives and mitigation steps from the classifier outputs, raw clause text, and provided context.
 - Embedding model - OpenAI text-embedding-3-large: produces high-quality vector embeddings for semantic search and RAG.
 
 ## Technologies

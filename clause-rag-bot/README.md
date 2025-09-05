@@ -3,7 +3,7 @@
 
 ## Objective
 
-In prior work [repo link](https://github.com/DucDungTran/NLP/tree/main/Contract-clause-analysis-chatbot), contract-clause classifiers were developed by fine-tuning LegalBERT and RoBERTa, and a risk-advisory chatbot was implemented using a GPT model via the OpenAI API. This project leverages retrieval-augmented generation (RAG) with LangChain, Azure OpenAI, and Azure AI Search to enhance grounding and relevance. In particular, a european contract law book [source link](https://www.legiscompare.fr/web/IMG/pdf/CFR_I-XXXIV_1-614.pdf) is utilized to provide specific knowledge base for LLM models.
+In prior work ([repo link](https://github.com/DucDungTran/NLP/tree/main/Contract-clause-analysis-chatbot)), contract-clause classifiers were developed by fine-tuning LegalBERT and RoBERTa, and a risk-advisory chatbot was implemented using a GPT model via the OpenAI API. This project leverages retrieval-augmented generation (RAG) with LangChain, Azure OpenAI, and Azure AI Search to enhance grounding and relevance. In particular, an european contract law book ([source link](https://www.legiscompare.fr/web/IMG/pdf/CFR_I-XXXIV_1-614.pdf)) is utilized to provide specific knowledge base for LLM models.
 
 ## Prerequisites
 

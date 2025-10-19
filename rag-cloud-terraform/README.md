@@ -104,31 +104,70 @@ These factors guide the evaluation across Amazon Web Services (AWS), Microsoft A
 
 ## Building a RAG system with Azure OpenAI and Azure AI Search
 
-**1. What are Microsoft Azure, Azure OpenAI, and Azure AI Cognitive Search?**
+### What are Microsoft Azure, Azure OpenAI, and Azure AI Cognitive Search?
 - Microsoft Azure is a cloud platform offering compute, storage, databases, AI, and networking services for building and running applications at scale.
 - Azure OpenAI Service provides access to OpenAI's models (GPT-4/5, GPT-4o, embeddings, etc.) on Azure infrastructure with enterprise security, compliance, and integration.
 - Azure AI Cognitive Search (now Azure AI Search) is a cloud search service that lets you index, search, and retrieve structured and unstructured content. It combines keyword search, semantic search, and vector search into a single service.
 
-**2. RAG with Azure OpenAI + AI Search in Python**
+### Create and Manage the required Azure Resources
 
-To build a RAG system with Microsoft Azure in Python, we first create the following Azure resources using the Azure portal or Azure Cloud Shell:
-- In Azure AI Foundry, create an AI Hub to organize projects.
-- Azure OpenAI: Deploy a chat/completions model (e.g., GPT-5/GPT-4.1 family) and an embeddings model (text-embedding-3-large/-3-small...).
-- Azure AI Search: Create a document search database with support for vectorization.
+We can create and manage the Azure resources in **three different ways**:
 
-RAG with Azure in Python: Provided in rag_azure.ipynb file.
+1. **Cloud-native (Azure Portal)**
+2. **Azure CLI (Automation Script)**
+3. **Terraform (Infrastructure as Code)**
 
-Demo (Streamlit): Paste a query in the chat. The tool returns responses with and without RAG.
+---
 
-![Streamlit demo](images/result.png)
+#### Architecture Overview
 
-**3. Cloud-Native RAG Inside Azure AI Foundry**
+The project uses the following Azure services:
 
-To configure RAG directly inside Azure AI Foundry, the following RAG flow is deployed:
-- Create AI Hub + Project,
-- Deploy chat + embedding models in Azure AI Foundry portal,
-- Create an Azure AI Search service,
-- Connect data source by uploading own data (markdown Azure docs) to chat playground in Azure AI Foundry portal,
+| Component | Azure Service | Description |
+|------------|----------------|-------------|
+| Resource Group | Azure Resource Manager | Container for all resources |
+| AI Search | Azure Cognitive Search | Stores and retrieves indexed documents |
+| AI Services | Azure OpenAI | Provides LLMs and embedding models |
+| AI Foundry Hub & Project | Azure Machine Learning / AI Foundry | Organizes RAG workflow, model connections, and deployments |
+
+---
+
+#### Folder Structure
+
+``` bash
+rag-cloud/
+├── azure-cli/          # Azure CLI automation script folder
+├── data/               # Dataset for RAG
+├── images/             # Images used in README.md
+├── terraform/          # Infrastructure as Code
+├── .env.template       # Contains environment variables (template)
+├── .gitignore          # File and folders are ignored by git
+├── app.py              # Streamlit UI for RAG chatbot
+├── rag_azure.ipynb     # Script for running RAG workflow
+└── README.md 
+```
+
+---
+
+#### Prerequisites
+
+- An **Azure subscription**
+- Installed tools:
+  - [Azure CLI](https://learn.microsoft.com/en-us/cli/azure/install-azure-cli)
+  - [Terraform](https://developer.hashicorp.com/terraform/downloads)
+  - Bash shell (WSL / macOS / Linux)
+- Permissions to create Azure AI and Cognitive Services resources
+
+---
+
+#### 1. Cloud-Native Deployment (Azure Portal)
+
+Use the Azure Portal UI if you prefer a **manual setup** with the following steps:
+1. Create a Resource Group
+2. Create Azure AI Search
+3. Create Azure OpenAI Service
+4. Create an AI Foundry Hub & Project
+5. Connect data source by uploading own data to chat playground in Azure AI Foundry portal,
 
 **Results**
 
@@ -138,8 +177,53 @@ Without RAG
 With RAG
 ![With RAG](images/cloud-naive-rag-02.png)
 
+#### 2. Azure CLI Deployment - Automation Script
+
+This method uses a **Bash script** to automate all resource creation, which can be found in `azure-cli/create_azure_resources.sh`. Run:
+- `cd azure-cli`
+- `./create_azure_resources.sh`
+
+#### 3. Terraform Deployment (Infrastructure as Code)
+
+This method uses Terraform to create all resources declaratively, which can be found in `terraform/main.tf`. We can run this method as follows:
+- `cd terraform/`
+- `terraform init`
+- `terraform plan`
+- `terraform apply`
+
+Terraform will:
+- Create the resource group
+- Create the AI Search and OpenAI service
+- Deploy the models
+- Optionally generate a .env file for your application
+
+A quick comparison between these three methods are provided below:
+
+| Feature              | Azure Portal    | Azure CLI            | Terraform                  |
+| -------------------- | --------------- | -------------------- | -------------------------- |
+| **Setup Complexity** | Simple          |  Moderate            | Advanced                   |
+| **Automation**       | No (Manual)     |  Scripted            | Declarative                |
+| **Repeatability**    | No              |  Yes                 | Yes                        |
+| **Version Control**  | No              |  Limited (scripts)   | Full (Git)                 |
+| **Collaboration**    | Manual          |  Script sharing      | Code-based collaboration   |
+| **Best For**         | Learning / Demo | Repeated experiments | Production & CI/CD         |
+
+
+After creating resources, rag_azure.ipynb file is used to run RAG workflow.
+
+Demo (Streamlit): Paste a query in the chat. The tool returns responses with and without RAG.
+
+![Streamlit demo](images/result.png)
+
 ## References
 
+- [Terraform](https://www.youtube.com/watch?v=weLkaZgyaOI&list=PLl4APkPHzsUUHlbhuq9V02n9AMLPySoEQ&index=6)
 - [RAG Course (DeepLearning.AI)](https://www.deeplearning.ai/courses/retrieval-augmented-generation-rag/)
 - [RAG in The Cloud](https://ragaboutit.com/rag-in-the-cloud-comparing-aws-azure-and-gcp-for-deploying-retrieval-augmented-generation-solutions/)
 - [RAG in Azure](https://www.udemy.com/course/rag-azure/?srsltid=AfmBOopllP1u1rFr7lPo57zgQZU-igkB3-yKjzveLY8uwyStl89nfWZ0)
+- [Azure OpenAI Service Docs](https://learn.microsoft.com/en-us/azure/ai-foundry/)
+- [Azure Cognitive Search Docs](https://learn.microsoft.com/en-us/azure/search/search-what-is-azure-search)
+- [Terraform AzureRM Provider](https://registry.terraform.io/providers/hashicorp/azurerm/latest)
+- [Azure CLI Reference](https://learn.microsoft.com/en-us/cli/azure/?view=azure-cli-latest)
+- [Azure AI Foundry Docs](https://learn.microsoft.com/en-us/azure/ai-foundry/)
+- [Streamlit](https://docs.streamlit.io/get-started)

@@ -1,0 +1,6 @@
+.env
+azure-cli/connection.yml
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/.terraform/
+terraform/.terraform.*

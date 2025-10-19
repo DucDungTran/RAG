@@ -224,6 +224,6 @@ Demo (Streamlit): Paste a query in the chat. The tool returns responses with and
 - [Azure OpenAI Service Docs](https://learn.microsoft.com/en-us/azure/ai-foundry/)
 - [Azure Cognitive Search Docs](https://learn.microsoft.com/en-us/azure/search/search-what-is-azure-search)
 - [Terraform AzureRM Provider](https://registry.terraform.io/providers/hashicorp/azurerm/latest)
--[Azure CLI Reference](https://learn.microsoft.com/en-us/cli/azure/?view=azure-cli-latest)
+- [Azure CLI Reference](https://learn.microsoft.com/en-us/cli/azure/?view=azure-cli-latest)
 - [Azure AI Foundry Docs](https://learn.microsoft.com/en-us/azure/ai-foundry/)
 - [Streamlit](https://docs.streamlit.io/get-started)
